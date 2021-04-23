@@ -4,7 +4,7 @@ import { useState } from "react";
 import { db } from "../firebase";
 import firebase from 'firebase';
 
-const ChatInput = ({channelName, channelId}) => {
+const ChatInput = ({channelName, channelId, chatRef}) => {
     const [input, setInput] = useState('');
 
     const sendMessage = e => {
@@ -19,6 +19,10 @@ const ChatInput = ({channelName, channelId}) => {
            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
            user: 'David Cid',
            userImage: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Tabby_cat_with_blue_eyes-3336579.jpg'
+        });
+
+        chatRef.current.scrollIntoView({
+            behavior: "smooth"
         });
 
         setInput('');
