@@ -10,14 +10,14 @@ const ChatInput = ({channelName, channelId}) => {
     const sendMessage = e => {
         e.preventDefault();
 
-        if (channelId) {
+        if (!channelId) {
             return false;
         }
 
         db.collection('rooms').doc(channelId).collection('messages').add({
            message: input,
            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-           user: 'Sonny Sangha',
+           user: 'David Cid',
            userImage: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Tabby_cat_with_blue_eyes-3336579.jpg'
         });
 
@@ -30,7 +30,7 @@ const ChatInput = ({channelName, channelId}) => {
                 <input 
                     value={input} 
                     onChange={e => setInput(e.target.value)}
-                    placeholder={`Message #ROOM`} 
+                    placeholder={`Message #${channelName}`} 
                 />
                 <Button hidden type="submit" onClick={sendMessage}>
                     SEND
