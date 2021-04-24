@@ -28,7 +28,7 @@ const Sidebar = () => {
                     <h2>PAPA FAM HQ</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                        Sonny Sangha
+                        {user.displayName}
                     </h3>
                 </SidebarInfo>
                 <CreateIcon />
